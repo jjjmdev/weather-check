@@ -50,6 +50,12 @@ form {
 .result {
 	background-color: rgba(0, 0, 0, 0.3);
 	color: white;
+	text-align: left;
+
+	& > .loc,
+	& > .description {
+		margin-top: 0.4rem;
+	}
 }
 
 .hidden {
