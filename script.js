@@ -6,24 +6,29 @@ const loc = document.querySelector(".loc")
 const desc = document.querySelector(".description")
 
 async function getWeather(location) {
-	let response = await fetch(
-		`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=UHZX76YK7CG8YKR5JACFNGS2X`
-	)
-	let data = await response.json()
+	try {
+		let response = await fetch(
+			`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=UHZX76YK7CG8YKR5JACFNGS2X`
+		)
+		let data = await response.json()
 
-	const tempF = data.currentConditions.temp
-	const tempC = Math.round(((tempF - 32) * 5) / 9)
-	const description = data.description
-	const completeAddress = data.resolvedAddress
+		const tempF = data.currentConditions.temp
+		const tempC = Math.round(((tempF - 32) * 5) / 9)
+		const description = data.description
+		const completeAddress = data.resolvedAddress
 
-	const weather = {
-		completeAddress,
-		description,
-		tempF,
-		tempC,
+		const weather = {
+			completeAddress,
+			description,
+			tempF,
+			tempC,
+		}
+
+		return weather
+	} catch {
+		result.classList.remove("hidden")
+		desc.textContent = "Not found."
 	}
-
-	return weather
 }
 
 searchBtn.addEventListener("click", async (e) => {
