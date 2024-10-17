@@ -7,6 +7,20 @@
 		<title>What's the Weather?</title>
 	</head>
 	<body>
+		<form>
+			<label for="search">
+				Location:
+				<input type="text" id="search" minlength="3" required />
+			</label>
+			<button type="submit" id="submit" class="search">Search</button>
+		</form>
+
+		<div class="result hidden">
+			<h2 class="temp"></h2>
+			<h3 class="loc"></h3>
+			<p class="description"></p>
+			<!-- <p class="loading"></p> -->
+		</div>
 		<script src="./script.js"></script>
 	</body>
 </html>
